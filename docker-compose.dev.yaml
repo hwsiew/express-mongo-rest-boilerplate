@@ -1,0 +1,15 @@
+version: "3.7"
+
+services: 
+  express:
+    build: 
+      args: 
+        NODE_ENV: development
+    environment: 
+      - NODE_ENV='development'
+    volumes: 
+      - ./server:/app
+      - /app/node_modules
+      - ./package.json:/app/package.json
+      - ./package-lock.json:/app/package-lock.json
+    command: npm run dev
