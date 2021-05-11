@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors')
 const mongoose = require('mongoose');
+const blogsRoute = require('./routes/blogs');
 
 const MONGO_USER = process.env.MONGO_USER || 'root';
 const MONGO_PSWD = process.env.MONGO_PASSWORD || 'root';
@@ -14,6 +15,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use('/static', express.static(path.join(__dirname, 'public')));
+app.use('/api/v1', blogsRoute);
 
 app.get('/', (req,res) => {
 	res.send('hello world');
