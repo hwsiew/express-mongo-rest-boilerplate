@@ -8,8 +8,5 @@ services:
     environment: 
       - NODE_ENV='development'
     volumes: 
-      - ./server:/app
-      - /app/node_modules
-      - ./package.json:/app/package.json
-      - ./package-lock.json:/app/package-lock.json
+      - ./server:/app/server
     command: npm run dev
