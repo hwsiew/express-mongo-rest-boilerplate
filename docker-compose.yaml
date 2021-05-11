@@ -11,3 +11,19 @@ services:
       - 3000:3000
     environment: 
       - NODE_ENV='production'
+      - MONGO_USER=root
+      - MONGO_PASSWORD=root
+    depends_on: 
+      - mongodb
+
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    environment: 
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    volumes:
+      - mongodb:/data/db 
+
+volumes: 
+  mongodb:
